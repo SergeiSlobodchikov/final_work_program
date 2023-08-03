@@ -63,4 +63,6 @@ public class AnimalRegistry {
             System.out.println("Животное с именем '" + animalName + "' не найдено.");
         }
     }
+
+
 }

@@ -6,6 +6,8 @@ public class Menu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         AnimalRegistry animalRegistry = new AnimalRegistry();
+//        AnimalDatabase animalDatabase = new AnimalDatabase(); // Создаем экземпляр класса AnimalDatabase
+
 
         try (Counter counter = new Counter()) {
             while (true) {
@@ -29,17 +31,24 @@ public class Menu {
                         String birthDate = scanner.nextLine();
                         System.out.println("Введите тип животного (Домашнее или Вьючное):");
                         String type = scanner.nextLine();
-                        if (Objects.equals(type, "Домашнее")){
+                        if (Objects.equals(type, "Домашнее")) {
                             System.out.println("Введите вид животного (Кошка, Собака, Хомяк или свой): ");
-                        } else if (Objects.equals(type, "Вьючное")){
+                        } else if (Objects.equals(type, "Вьючное")) {
                             System.out.println("Введите вид животного (Осел, Лошадь, Верблюд или свой): ");
-                        } else{
+                        } else {
                             System.out.println("Введите вид животного неизвестного типа: ");
                         }
                         String species = scanner.nextLine();
                         animalRegistry.addAnimal(name, command, birthDate, type, species);
                         System.out.println("Животное успешно добавлено в реестр.");
+//                        // Сохраняем животных в базу данных
+//                        if (Objects.equals(type, "Домашнее")) {
+//                            animalDatabase.saveDomesticAnimals(animalRegistry.getDomesticAnimals());
+//                        } else if (Objects.equals(type, "Вьючное")) {
+//                            animalDatabase.saveDraughtAnimals(animalRegistry.getDraughtAnimals());
+//                        }
                         break;
+
                     case 2:
                         animalRegistry.printDomesticAnimals();
                         break;
@@ -68,6 +77,9 @@ public class Menu {
             }
         } catch (RuntimeException e) {
             System.out.println(e.getMessage()); // Выведет ошибку, если Счетчик был использован неправильно
+//        } finally {
+//            animalDatabase.closeConnection(); // Закрываем соединение с базой данных при выходе из программы
+//            scanner.close();
         }
     }
 }

@@ -56,5 +56,9 @@ public class Animal {
 
     public void setSpecies(String species) {
     }
+
+    public String getSpecies() {
+        return null;
+    }
 }
 
